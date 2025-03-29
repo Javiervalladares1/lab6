@@ -18,18 +18,7 @@ Eliminar Partido
 
 
 
-Este proyecto implementa un backend en Go que gestiona partidos de La Liga. 
-## Endpoints
-
-- **GET /api/matches**: Lista todos los partidos (incluye goles, tarjetas y tiempo extra).
-- **GET /api/matches/{id}**: Obtiene los detalles de un partido por ID.
-- **POST /api/matches**: Crea un nuevo partido (los campos adicionales se inicializan en 0).
-- **PUT /api/matches/{id}**: Actualiza los datos básicos de un partido.
-- **DELETE /api/matches/{id}**: Elimina un partido.
-- **PATCH /api/matches/{id}/goals**: Actualiza los goles del partido. Se espera un JSON con "homeGoals" y "awayGoals".
-- **PATCH /api/matches/{id}/yellowcards**: Registra tarjetas amarillas. Se espera un JSON con "yellowCards".
-- **PATCH /api/matches/{id}/redcards**: Registra tarjetas rojas. Se espera un JSON con "redCards".
-- **PATCH /api/matches/{id}/extratime**: Registra el tiempo extra. Se espera un JSON con "extraTime".
+Este proyecto implementa un backend en Go que gestiona partidos de La Liga.
 
 ## Documentación
 
