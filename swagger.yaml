@@ -1,0 +1,172 @@
+openapi: 3.0.0
+info:
+  title: La Liga Tracker API
+  version: "1.0.0"
+paths:
+  /api/matches:
+    get:
+      summary: "Obtener todos los partidos"
+      responses:
+        '200':
+          description: "Lista de partidos"
+    post:
+      summary: "Crear un nuevo partido"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Match"
+      responses:
+        '200':
+          description: "Partido creado"
+  /api/matches/{id}:
+    get:
+      summary: "Obtener un partido por ID"
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      responses:
+        '200':
+          description: "Detalles del partido"
+    put:
+      summary: "Actualizar un partido"
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Match"
+      responses:
+        '200':
+          description: "Partido actualizado"
+    delete:
+      summary: "Eliminar un partido"
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      responses:
+        '204':
+          description: "Partido eliminado"
+  /api/matches/{id}/goals:
+    patch:
+      summary: "Actualizar los goles del partido"
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                homeGoals:
+                  type: integer
+                awayGoals:
+                  type: integer
+      responses:
+        '204':
+          description: "Goles actualizados"
+  /api/matches/{id}/yellowcards:
+    patch:
+      summary: "Registrar tarjetas amarillas"
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                yellowCards:
+                  type: integer
+      responses:
+        '204':
+          description: "Tarjetas amarillas registradas"
+  /api/matches/{id}/redcards:
+    patch:
+      summary: "Registrar tarjetas rojas"
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                redCards:
+                  type: integer
+      responses:
+        '204':
+          description: "Tarjetas rojas registradas"
+  /api/matches/{id}/extratime:
+    patch:
+      summary: "Registrar tiempo extra"
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                extraTime:
+                  type: integer
+      responses:
+        '204':
+          description: "Tiempo extra registrado"
+components:
+  schemas:
+    Match:
+      type: object
+      properties:
+        id:
+          type: integer
+        homeTeam:
+          type: string
+        awayTeam:
+          type: string
+        matchDate:
+          type: string
+          format: date
+        homeGoals:
+          type: integer
+        awayGoals:
+          type: integer
+        yellowCards:
+          type: integer
+        redCards:
+          type: integer
+        extraTime:
+          type: integer
