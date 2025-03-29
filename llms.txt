@@ -1,0 +1,16 @@
+
+
+Endpoints:
+- GET /api/matches: Obtiene la lista completa de partidos.
+- GET /api/matches/{id}: Obtiene los detalles de un partido por ID.
+- POST /api/matches: Crea un nuevo partido. Los campos adicionales (goles, tarjetas, tiempo extra) se inicializan en 0.
+- PUT /api/matches/{id}: Actualiza los datos básicos del partido.
+- DELETE /api/matches/{id}: Elimina un partido.
+- PATCH /api/matches/{id}/goals: Actualiza los goles del partido. Se espera un JSON con "homeGoals" y "awayGoals".
+- PATCH /api/matches/{id}/yellowcards: Registra tarjetas amarillas. Se espera un JSON con "yellowCards".
+- PATCH /api/matches/{id}/redcards: Registra tarjetas rojas. Se espera un JSON con "redCards".
+- PATCH /api/matches/{id}/extratime: Registra el tiempo extra del partido. Se espera un JSON con "extraTime".
+
+Para utilizar la API, envía peticiones HTTP (GET, POST, PUT, DELETE, PATCH) a las rutas indicadas. La documentación detallada se encuentra en el archivo swagger.yaml.
+
+El manejo de solicitudes CORS está configurado para permitir peticiones desde cualquier origen.
